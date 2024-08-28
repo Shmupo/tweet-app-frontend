@@ -1,0 +1,13 @@
+<h3>Tweets</h3>
+<hr />
+
+<ul class="list-group list-group-flush">
+    <li class="list-group-item" *ngFor="let post of posts">
+        <div class="d-flex justify-content-start">
+          <a class="font-weight-bold" [href]="'/posts/' + post.id">{{post.title}}</a>
+          <p class="badge badge-pill badge-secondary ml-3">{{post.tag}}</p>
+        </div>
+        <p>{{post.content}}</p>
+        <p class="test-secondary">Created {{ post.createdAt | date : 'medium' }}</p>
+    </li>
+  </ul>

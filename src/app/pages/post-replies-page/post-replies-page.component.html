@@ -1,0 +1,30 @@
+<div class="container" style="min-height: 90vh;">
+
+    <div style="height: 6rem;"></div>
+
+    <div class="card" style="width: 100%;" *ngIf="post">
+        <div class="card-body">
+        <div>
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="badge badge-pill badge-secondary ml-3">{{post.tag}}</p>
+        </div>
+            <p class="card-text">{{ post.content }}</p>
+            <p class="test-secondary">Created {{ post.createdAt | date : 'medium' }}</p>
+        </div>
+    </div>
+
+    <hr />
+    <app-reply-create [postId]="post?.id" *ngIf="post"></app-reply-create>
+
+
+    <h3 class="mt-3">Replies</h3>
+    <hr />
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let reply of replies">
+            <p class="badge badge-pill badge-secondary">{{post.tag}}</p>
+            <p>{{ reply.content }}</p>
+            <p class="test-secondary">Created {{ reply.createdAt | date : 'medium' }}</p>
+        </li>
+      </ul>
+
+</div>
