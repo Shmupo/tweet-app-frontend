@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TweetAppFrontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.4.
@@ -25,3 +26,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+=======
+# tweet-app-frontend
+Frontend of the TweetApp Website made using Angular
+>>>>>>> dfd0997ed978ced4db82298f881d63b3f08062c5
