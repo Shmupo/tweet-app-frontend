@@ -1,1 +1,70 @@
-<p>register-page works!</p>
+<div class="container bg-light d-flex align-items-center justify-content-center" style="min-height: 80vh;">
+    <div class="shadow rounded m-4 p-4 bg-white" style="width: 32rem;">
+        <div role="alert" [ngClass]="alertClass" *ngIf="loggedIn">
+            {{ responseMessage }}
+        </div>
+
+        <div *ngIf="loggedIn">
+            <a href="/home">Return to home</a>
+        </div>
+
+        <!--Reactive login form to display if not logged in-->
+        <div *ngIf="!loggedIn">
+            <h2>Register</h2>
+            <hr />
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmitHandler()">
+
+                <!--Username-->
+                <div class="formGroup mt-4">
+                    <label>Username</label>
+                    <input
+                    type="text"
+                    class="form-control bg-light"
+                    formControlName="username"
+                    [class.is-invalid]="username?.touched && username?.invalid">
+                    <div *ngIf="username?.errors && username?.touched">
+                        <small class="text-danger" *ngIf="username.errors['required']">Username is required</small>
+                        <small class="text-danger" *ngIf="username.errors['minlength']">Username is must be between 4 and 32 characters</small>
+                    </div>
+                </div>
+
+                <!--Email-->
+                <div class="formGroup mt-4">
+                    <label>Email</label>
+                    <input
+                    type="text"
+                    class="form-control bg-light"
+                    formControlName="email"
+                    [class.is-invalid]="email?.touched && email?.invalid">
+                    <div *ngIf="email?.errors && email?.touched">
+                        <small class="text-danger" *ngIf="email.errors['required']">Email is required</small>
+                        <small class="text-danger" *ngIf="email.errors['email']">Email is not valid</small>
+                    </div>
+                </div>
+
+                <!--Password-->
+                <div class="formGroup mt-4">
+                    <label>Password</label>
+                    <input
+                    type="password"
+                    class="form-control bg-light"
+                    formControlName="password"
+                    [class.is-invalid]="password?.touched && password?.invalid">
+                    <div *ngIf="password?.errors && password?.touched">
+                        <small class="text-danger" *ngIf="password.errors['required']">Password is required</small>
+                        <small class="text-danger" *ngIf="password.errors['minlength']">
+                            Password must be at least 8 characters long
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group mt-4">
+                    <button type="submit" class="btn btn-primary w-100 mt-2">Register</button>
+                </div>
+
+            </form>
+            <br>
+            <p class="text-center">Already Registered? <a href="/login">Login</a></p>
+        </div>
+    </div>
+</div>

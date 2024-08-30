@@ -1,1 +1,55 @@
-<p>login-page works!</p>
+<div class="container bg-light d-flex align-items-center justify-content-center" style="min-height: 80vh;">
+    <div class="shadow rounded m-4 p-4 bg-white" style="width: 32rem;">
+        <div role="alert" [ngClass]="alertClass" *ngIf="responseMessage != ''">
+            {{ responseMessage }}
+        </div>
+
+        <div *ngIf="loggedIn">
+            <a href="/home">Return to home</a>
+        </div>
+
+        <!--Reactive login form to display if not logged in-->
+        <div *ngIf="!loggedIn">
+            <h2>Log In</h2>
+            <hr />
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmitHandler()">
+
+                <!--Username or Email-->
+                <div class="formGroup mt-4">
+                    <label>Username or Email</label>
+                    <input
+                    type="text"
+                    class="form-control bg-light"
+                    formControlName="usernameOrEmail"
+                    [class.is-invalid]="usernameOrEmail?.touched && usernameOrEmail?.invalid">
+                    <div *ngIf="usernameOrEmail?.errors && usernameOrEmail?.touched">
+                        <small class="text-danger" *ngIf="usernameOrEmail.errors['required']">Username or email is required</small>
+                    </div>
+                </div>
+
+                <!--Password-->
+                <div class="formGroup mt-4">
+                    <label>Password</label>
+                    <input
+                    type="password"
+                    class="form-control bg-light"
+                    formControlName="password"
+                    [class.is-invalid]="password?.touched && password?.invalid">
+                    <div *ngIf="password?.errors && password?.touched">
+                        <small class="text-danger" *ngIf="password.errors['required']">Password is required</small>
+                        <small class="text-danger" *ngIf="password.errors['minlength']">
+                            Password must be at least 8 characters long
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group mt-4">
+                    <button type="submit" class="btn btn-primary w-100 mt-2">Login</button>
+                </div>
+
+            </form>
+            <br>
+            <p class="text-center">Not Registered? <a href="/register">Register</a></p>
+        </div>
+    </div>
+</div>

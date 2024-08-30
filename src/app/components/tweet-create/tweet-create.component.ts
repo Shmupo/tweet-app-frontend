@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';  // Import NgForm
 import { Post } from '../../models/post.model';
 import { TweetService } from '../../services/tweet.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-tweet-create',
@@ -16,10 +17,21 @@ import { TweetService } from '../../services/tweet.service';
 })
 export class TweetCreateComponent {
   post: Post = new Post();
+  profile: any = null
+  loggedIn: boolean = false
 
-  constructor(private tweetService: TweetService) {}
+  constructor(private tweetService: TweetService, private authService: AuthService) {
+    authService.getProfile().subscribe((response) => {
+      this.profile = response
+
+      if (this.profile) {
+        this.loggedIn = true
+      }
+    })
+  }
 
   onSubmitHandler(postCreateForm: NgForm) {  // Accept the form object (NgForm)
+    this.post.userId = this.profile.id
     if (postCreateForm.valid) {  // Check the form's validity
       console.log("Submitting...");
       console.log(this.post);  // Log the post object

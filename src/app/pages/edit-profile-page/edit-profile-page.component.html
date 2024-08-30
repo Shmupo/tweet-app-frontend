@@ -1,0 +1,46 @@
+<div class="container bg-light d-flex justify-content-center align-items-center" 
+style="min-height: 90vh;">
+    
+    <div class="card" *ngIf="!loggedIn">
+        <div class="card-body">
+            <p class="card-text">Login to edit your profile</p>
+            <a href="/login" class="btn btn-primary">Login</a>
+        </div>
+    </div>
+    
+    <div class="card" *ngIf="loggedIn" style="max-width: 24rem;">
+      <img 
+      *ngIf="profileImgUrl" 
+      [src]="profileImgUrl" 
+      alt="Profile Image" 
+      class="card-img-top"
+      style="max-width: 100%;"/>
+      <div class="card-body">
+        <h3>{{profile.username}}</h3>
+        <p>{{profile.email}}</p>
+
+        <hr />
+        <p>Select a profile image</p>
+        <div class="image-row">
+            <button 
+            *ngFor="let image of images"
+            [class.selected]="image === selectedImage"
+            class="img-btn"
+            (click)="selectImage(image)">
+            <img 
+            class="img-thumbnail bordered"
+             [src]="apiUrl + image"
+              [alt]="image">
+            </button>
+        </div>
+  
+        <button  
+        class="btn btn-primary mt-2" 
+        (click)="updateProfile()"
+        [attr.disabled]="!selectedImage ? true : null" >
+            Update
+        </button>
+      </div>
+    </div>
+
+</div>

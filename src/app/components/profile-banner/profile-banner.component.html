@@ -1,1 +1,19 @@
-<p>profile-banner works!</p>
+<div class="card" *ngIf="!loggedIn">
+  <div class="card-body">
+    <p class="card-text">Login to create a profile in order to gain the ability to tweet and reply to tweets.</p>
+    <a href="/login" class="btn btn-primary">Login</a>
+  </div>
+</div>
+
+<div class="card" *ngIf="loggedIn">
+  <img 
+  *ngIf="profileImgUrl" 
+  [src]="profileImgUrl" 
+  alt="Profile Image" 
+  class="card-img-top"
+  style="max-width: 100%;"/>
+  <div class="card-body">
+    <h3>{{profile.username}}</h3>
+    <p>{{profile.email}}</p>
+  </div>
+</div>

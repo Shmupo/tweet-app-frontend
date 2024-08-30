@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,14 @@ export class TweetService {
 
   getPostReplies(postId: number): Observable<any[]> {
     return this.http.get<any[]>(`http://localhost:9191/api/replies/${postId}`)
+  }
+
+  getPostByUserId(userId: number): Observable<any> {
+    return this.http.get<any[]>(`http://localhost:9191/api/posts/user/${userId}`)
+  }
+
+  getUsernameOfUserId(userId: string): Observable<string> {
+    return this.http.get(`http://localhost:9191/api/users/id/username/${userId}`, { responseType: 'text' });
   }
 
   createPost(post: any): Observable<any> {
