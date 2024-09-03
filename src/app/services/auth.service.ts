@@ -1,11 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of, throwError } from 'rxjs';
+import { catchError, Observable, of, tap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private profileCache: any;
+
+
   constructor(private http: HttpClient) { }
 
   register(data: any): Observable<any> {
@@ -27,6 +30,9 @@ export class AuthService {
           localStorage.removeItem('token');
           console.error('Error fetching profile:', error);
           return throwError(() => error);
+        }),
+        tap(profile => {
+          this.profileCache = profile;
         })
       );
     } else {
@@ -36,9 +42,7 @@ export class AuthService {
   }
 
   checkToken(): boolean {
-    if(localStorage.getItem('token')) {
-      return true
-    } else return false
+    return !!localStorage.getItem('token') 
   }
 
   logout() {

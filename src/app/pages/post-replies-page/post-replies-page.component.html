@@ -15,6 +15,11 @@
             <p class="ml-3" style="font-size: 0.8rem;" *ngIf="postAuthor">By: {{ postAuthor }}</p>
             <p class="card-text">{{ post.content }}</p>
             <p class="test-secondary">Created {{ post.createdAt | date : 'medium' }}</p>
+            <div class="d-flex">
+                <button class="btn btn-primary" (click)="userLikePost(post.id)" *ngIf="profile && !userLike">Like</button>
+                <button class="btn btn-danger" (click)="userUnlikePost(post.id)" *ngIf="profile && userLike">Unlike</button>
+                <p class="ml-3 my-auto font-weight-bold" style="font-size: 0.8rem;" *ngIf="likes !== undefined">Likes: {{ likes }}</p>
+            </div>
         </div>
     </div>
 

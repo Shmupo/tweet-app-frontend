@@ -15,17 +15,29 @@ export class ProfileBannerComponent implements OnInit {
   profile: any = null
   profileImgUrl: string = '...'
   loggedIn: boolean = false
+  defaultImgUrl: string = 'http://localhost:9191/api/users/images/default-profile.jpg'
 
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
     this.authService.getProfile().subscribe((response) => {
-      this.profile = response
-
+      this.profile = response;
+  
       if (this.profile) {
-        this.loggedIn = true
-        this.profileImgUrl = `http://localhost:9191/api/users/images/${this.profile.imgName}`
+        this.loggedIn = true;
+        this.profileImgUrl = `http://localhost:9191/api/users/images/${this.profile.imgName}`;
+  
+        const img = new Image();
+        img.src = this.profileImgUrl; // Use this.profileImgUrl instead of url
+        img.onload = () => {
+          // Image loaded successfully
+          this.profileImgUrl = this.profileImgUrl;
+        };
+        img.onerror = () => {
+          // Error loading image, set default
+          this.profileImgUrl = this.defaultImgUrl;
+        };
       }
-    })
+    });
   }
 }
