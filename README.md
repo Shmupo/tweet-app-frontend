@@ -1,32 +1,43 @@
-<<<<<<< HEAD
-# TweetAppFrontend
+# Tweet App Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.4.
+Angular frontend application that displays a X/Twitter-like webpage.
 
-## Development server
+The backend is interacted with VIA API calls using service components.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Table of Contents
 
-## Code scaffolding
+- [Getting Started](#getting-started)
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Running the Application](#running-the-application)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Getting Started
 
-## Build
+Instructions to set up the project locally.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Features
 
-## Running unit tests
+- **Feature 1:** Brief description of feature 1.
+- **Feature 2:** Brief description of feature 2.
+- **Feature 3:** Brief description of feature 3.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Prerequisites
 
-## Running end-to-end tests
+Before you begin, make sure you have the following installed:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- **Node.js**: >= 14.x
+- **npm**: >= 6.x or **yarn** (optional)
+- **Angular CLI**: `npm install -g @angular/cli`
 
-## Further help
+## Running the Application
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-=======
-# tweet-app-frontend
-Frontend of the TweetApp Website made using Angular
->>>>>>> dfd0997ed978ced4db82298f881d63b3f08062c5
+After the installation, you can run the development server:
+
+```bash
+ng s
+```
+
+Open your browser and navigate to `http://localhost:4200/`. The app will automatically reload if you change any source files.
+
+## See the backend
+[Tweep App Backend](https://github.com/Shmupo/tweet-app-backend)
