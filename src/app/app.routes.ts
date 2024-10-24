@@ -5,6 +5,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { MyPostsPageComponent } from './pages/my-posts-page/my-posts-page.component';
 import { EditProfilePageComponent } from './pages/edit-profile-page/edit-profile-page.component';
+import { TagPostsPageComponent } from './pages/tag-posts-page/tag-posts-page.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomePageComponent},
@@ -13,5 +14,6 @@ export const routes: Routes = [
     { path: 'login', component: LoginPageComponent},
     { path: 'register', component: RegisterPageComponent},
     { path: 'my-posts', component: MyPostsPageComponent},
-    { path: 'edit-profile', component: EditProfilePageComponent }
+    { path: 'edit-profile', component: EditProfilePageComponent },
+    { path: 'posts/tag/:tag', component: TagPostsPageComponent },
 ];

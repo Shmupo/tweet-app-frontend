@@ -10,7 +10,7 @@
         <a class="nav-link" href="/edit-profile" *ngIf="loggedIn">Edit Profile</a>
         <a class="nav-link" href="/login" *ngIf="!loggedIn">Login</a>
         <a class="nav-link" href="/register" *ngIf="!loggedIn">Register</a>
-        <a class="nav-link" href="#" (click)="logout()">Logout</a>
+        <a class="nav-link" href="#" (click)="logout()" *ngIf="loggedIn">Logout</a>
       </div>
     </div>
   </nav>

@@ -37,7 +37,7 @@ export class TweetCreateComponent {
       console.log(this.post);  // Log the post object
       this.tweetService.createPost(this.post).subscribe(
         response => {
-          alert("Post created successfully!");
+          alert("Post created successfully! Refresh the page to see your post!");
           postCreateForm.resetForm();  // Reset the form after submission
           this.post = new Post();  // Reset the post object
         },

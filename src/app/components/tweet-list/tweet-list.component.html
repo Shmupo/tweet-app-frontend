@@ -2,7 +2,7 @@
   <li class="list-group-item" *ngFor="let post of posts; let i = index">
         <div class="d-flex justify-content-start">
           <a class="font-weight-bold" [href]="'/posts/' + post.id">{{post.title}}</a>
-          <p class="badge badge-pill badge-secondary ml-3">{{post.tag}}</p>
+          <a class="badge badge-pill badge-secondary ml-3" [href]="'/posts/tag/' + post.tag">{{post.tag}}</a>
         </div>
         <p class="ml-3" style="font-size: 0.8rem;" *ngIf="authors[i]">By: {{ authors[i] }}</p>
         <p>{{post.content}}</p>

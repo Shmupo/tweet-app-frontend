@@ -13,6 +13,10 @@ export class TweetService {
     return this.http.get<any[]>(`http://localhost:9191/api/posts`)
   }
 
+  getAllPostsByTag(tag: String): Observable<any[]> {
+    return this.http.get<any[]>(`http://localhost:9191/api/posts/tag/${tag}`)
+  }
+
   getPostById(postId: number): Observable<any[]> {
     return this.http.get<any[]>(`http://localhost:9191/api/posts/${postId}`)
   }
